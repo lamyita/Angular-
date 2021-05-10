@@ -6,7 +6,7 @@ import { ListAddressComponent } from './components/list-address/list-address.com
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './gurds/auth.guard';
-
+import { AfterAuthGuard } from './gurds/after-auth.guard';
 const routes: Routes = [
 
   {path:"", redirectTo:'/address', pathMatch:'full'},
@@ -22,7 +22,7 @@ const routes: Routes = [
 
 }, 
 
-{path:"login", component:LoginComponent},
+{path:"login", component:LoginComponent, canActivate:[AfterAuthGuard]},
 {path:"**", component: PageNotFoundComponent}
 
 ];
